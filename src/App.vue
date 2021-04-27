@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home">
+    <Contain />
+    <SecondCon />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Contain from './components/Contain';
+import SecondCon from './components/SecondCon.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Contain,
+    SecondCon,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.home {
+  width: 100%;
+  height: auto;
+}
+
+.home-top {
+  width: 100%;
+  height: 30px;
+  background: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
