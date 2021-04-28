@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "^0.3.5",
+    "apng-js": "^1.1.1",
     "core-js": "^3.6.5",
     "reset-css": "^5.0.1",
     "vue": "^3.0.0",
+    "vue-apng": "^1.1.1",
     "vue-carousel": "^0.18.0",
     "vuetify": "^2.4.11"
   },

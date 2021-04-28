@@ -1,24 +1,3 @@
-# vue-interaction
+# 카카오 글로벌 IP 웹 사이트 테스트용
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 뷰를 이용한 패럴랙스 인터랙션 및 각종 인터랙션을 테스트하기 위함.

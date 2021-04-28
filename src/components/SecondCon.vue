@@ -21,6 +21,8 @@
 
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
+// import VueApng from 'vue-apng';
+// import parseAPNG from 'apng-js';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import elepant from '../assets/apngtest2.png';
 import whatisthis from '../assets/apngtest1.png';
@@ -30,9 +32,11 @@ export default {
   components: {
     Splide,
     SplideSlide,
+    // VueApng,
   },
   data() {
     return {
+      // apngtest: '',
       slides: [
         { src: elepant, index: 0, name: 'ryan', back: 'rgb(240, 176, 38)' },
         { src: whatisthis, index: 1, name: 'apeach', back: 'rgb(240, 157, 179)' },
@@ -58,6 +62,17 @@ export default {
       currentIdx: 0,
     };
   },
+  // mounted() {
+  //   let fr = new FileReader();
+  //   fr.readAsArrayBuffer(elepant);
+  //   fr.onload = function() {
+  //     const apng = parseAPNG(fr.result);
+  //     apng.createImages().then(() => {
+  //       this.apngtest = apng.frames[10].imageElement.apngtest;
+  //       console.log(this.apngtest);
+  //     });
+  //   };
+  // },
   methods: {
     onMoved(root, newIndex) {
       //   console.log('root : ', root);
