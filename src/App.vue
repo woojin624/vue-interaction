@@ -1,20 +1,15 @@
 <template>
   <div class="home">
-    <Contain />
-    <SecondCon />
+    <NavBar />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Contain from './components/Contain';
-import SecondCon from './components/SecondCon.vue';
-
+import NavBar from './components/NavBar.vue';
 export default {
   name: 'App',
-  components: {
-    Contain,
-    SecondCon,
-  },
+  components: { NavBar },
 };
 </script>
 
@@ -31,14 +26,5 @@ export default {
 .home {
   width: 100%;
   height: auto;
-}
-
-.home-top {
-  width: 100%;
-  height: 30px;
-  background: lightgray;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
