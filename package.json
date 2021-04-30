@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "^0.3.5",
+    "@vuelidate/core": "^2.0.0-alpha.16",
+    "@vuelidate/validators": "^2.0.0-alpha.13",
     "apng-js": "^1.1.1",
     "core-js": "^3.6.5",
     "reset-css": "^5.0.1",

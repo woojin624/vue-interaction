@@ -18,7 +18,7 @@ export default {};
   top: 0;
   width: 100%;
   height: 54px;
-  background: #eee;
+  background: rgba(238, 238, 238, 0.173);
   z-index: 9999;
 }
 

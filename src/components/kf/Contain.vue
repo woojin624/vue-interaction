@@ -69,7 +69,6 @@ export default {
       }
 
       this.scrollTimeout = window.requestAnimationFrame(() => {
-        this.offsetX = window.pageXOffset;
         this.offsetY = window.pageYOffset;
         console.log('offsetY : ', this.offsetY, 'requestAnimationFrame');
         // console.log('this.translation : ', this.translation);
@@ -81,7 +80,7 @@ export default {
   created() {
     window.addEventListener('scroll', this.handleScroll, false);
   },
-  beforeDestroyed() {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll, false);
   },
   computed: {

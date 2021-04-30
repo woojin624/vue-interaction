@@ -3,7 +3,7 @@
     <h2 class="sec-title">Friends</h2>
     <div class="slide-container">
       <splide :slides="slides" :options="options" @splide:move="onMoved">
-        <splide-slide class="slide-wrap" v-for="slide in slides" :key="slide.index" :style="{ backgroundColor: slide.back }">
+        <splide-slide @click="$router.push(`/kakaofriends/${slide.name}`)" class="slide-wrap" v-for="slide in slides" :key="slide.index" :style="{ backgroundColor: slide.back }">
           <h2 class="slide-char-name">{{ slide.name }}</h2>
           <img class="slide-img" :src="slide.src" />
         </splide-slide>
@@ -21,8 +21,6 @@
 
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-// import VueApng from 'vue-apng';
-// import parseAPNG from 'apng-js';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import elepant from '../../assets/apngtest2.png';
 import whatisthis from '../../assets/apngtest1.png';
@@ -62,22 +60,10 @@ export default {
       currentIdx: 0,
     };
   },
-  // mounted() {
-  //   let fr = new FileReader();
-  //   fr.readAsArrayBuffer(elepant);
-  //   fr.onload = function() {
-  //     const apng = parseAPNG(fr.result);
-  //     apng.createImages().then(() => {
-  //       this.apngtest = apng.frames[10].imageElement.apngtest;
-  //       console.log(this.apngtest);
-  //     });
-  //   };
-  // },
+
   methods: {
     onMoved(root, newIndex) {
-      //   console.log('root : ', root);
       //   console.log('newIndex : ', newIndex);
-      //   console.log('oldIndex : ', oldIndex);
       this.currentIdx = newIndex;
       console.log('this.currentIdx : ', this.currentIdx);
     },

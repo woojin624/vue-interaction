@@ -15,7 +15,8 @@ i {
 body {
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'Microsoft Yahei', 'simsun', 'arial', 'tahoma';
+  /* font-family: 'Microsoft Yahei', 'simsun', 'arial', 'tahoma'; */
+  font-family: 'Noto Sans KR', sans-serif;
   /* color: #222;
   background: #eee; */
 }
