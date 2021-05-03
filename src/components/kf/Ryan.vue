@@ -1,62 +1,117 @@
 <template>
-  <section class="card-wrap">
-    <h1 class="card-title">RYAN THE<br />LION</h1>
-    <div @click="onCardClick" :class="cardClass">
+  <section class="card-wrap" v-for="ryan in ryanContent" :key="ryan.index">
+    <h1 class="card-title">{{ ryan.title }}</h1>
+    <div @click="onCardClick" :class="ryan.cardClass" :data-num="ryan.index">
       <img class="card img-front" src="../../assets/ryan-the-lion.jpeg" alt="" />
       <div class="card img-back">
         <h1 class="img-back-title">RYAN<br />THE<br />LION</h1>
+        <RyanCardSlide :slides="ryan.slides" :cardClicked="ryan.cardClicked" v-if="ryan.cardClicked" :class="ryan.cardSlideHide" />
+        <div v-if="ryan.cardClicked" :class="ryan.cardMoreBtn">See More Contents</div>
       </div>
     </div>
   </section>
-  <section class="card-wrap">
-    <h1 class="card-title">RYAN THE<br />LION</h1>
-    <div class="img-wrap">
-      <img class="card img-front" src="../../assets/ryan-the-lion.jpeg" alt="" />
-      <div class="card img-back">
-        <h1 class="img-back-title">RYAN<br />THE<br />LION</h1>
-      </div>
-    </div>
-  </section>
+  <div class="something"></div>
 </template>
 
 <script>
-// $('.window').animate( { scrollTop : $(selector).offset().top }, 500 );
-// window.scrollTo()
+const body = document.querySelector('body');
+import example from '../../assets/IMG_4862.jpg';
+import RyanCardSlide from './RyanCardSlide';
+
 export default {
   name: 'Ryan',
+  components: {
+    RyanCardSlide,
+  },
   data() {
     return {
-      cardClass: 'img-wrap',
+      ryanContent: [
+        {
+          index: 0,
+          title: 'RYAN THE LION',
+          cardClicked: false,
+          cardClass: 'img-wrap',
+          cardMoreBtn: 'card-more-btn hide',
+          cardSlideHide: 'card-slide-wrap hide',
+          slides: [
+            { src: example, index: 0 },
+            { src: example, index: 1 },
+            { src: example, index: 2 },
+          ],
+        },
+        {
+          index: 1,
+          title: 'RYCHOON DANCE',
+          cardClicked: false,
+          cardClass: 'img-wrap',
+          cardMoreBtn: 'card-more-btn hide',
+          cardSlideHide: 'card-slide-wrap hide',
+          slides: [
+            { src: example, index: 0 },
+            { src: example, index: 1 },
+            { src: example, index: 2 },
+          ],
+        },
+        {
+          index: 2,
+          title: 'PLAY WITH RYAN',
+          cardClicked: false,
+          cardClass: 'img-wrap',
+          cardMoreBtn: 'card-more-btn hide',
+          cardSlideHide: 'card-slide-wrap hide',
+          slides: [
+            { src: example, index: 0 },
+            { src: example, index: 1 },
+            { src: example, index: 2 },
+          ],
+        },
+      ],
+
+      body: body,
       vt: document.documentElement.clientHeight,
     };
   },
   methods: {
     onCardClick(e) {
+      if (e.target !== e.currentTarget.childNodes[0] && e.target !== e.currentTarget.childNodes[1]) return;
+      let idx = e.target.parentNode.dataset.num;
       this.getScrollTop(e);
-      if (this.cardClass === 'img-wrap') {
-        this.cardClass = 'img-wrap flip';
+      if (this.ryanContent[idx].cardClass === 'img-wrap') {
+        this.ryanContent[idx].cardClass = 'img-wrap flip non-target';
+        this.body.classList.add('scroll-stop');
         setTimeout(() => {
-          this.cardClass = 'img-wrap flip extend';
+          this.ryanContent[idx].cardClass = 'img-wrap flip extend non-target';
+          this.ryanContent[idx].cardClicked = true;
+          setTimeout(() => {
+            this.ryanContent[idx].cardMoreBtn = 'card-more-btn';
+            this.ryanContent[idx].cardSlideHide = 'card-slide-wrap';
+            this.ryanContent[idx].cardClass = 'img-wrap flip extend';
+          }, 1000);
         }, 1000);
       } else {
-        this.cardClass = 'img-wrap flip';
+        this.ryanContent[idx].cardMoreBtn = 'card-more-btn hide';
+        this.ryanContent[idx].cardSlideHide = 'hide';
         setTimeout(() => {
-          this.cardClass = 'img-wrap';
-        }, 1000);
+          this.ryanContent[idx].cardClicked = false;
+          this.ryanContent[idx].cardClass = 'img-wrap flip non-target';
+          this.body.classList.remove('scroll-stop');
+          setTimeout(() => {
+            this.ryanContent[idx].cardClass = 'img-wrap';
+          }, 1000);
+        }, 300);
       }
     },
     getScrollTop(e) {
       if (e.target.nextSibling) {
-        console.log(e.target.nextSibling.getBoundingClientRect().top);
-        console.log(e.target.nextSibling.getBoundingClientRect());
-        console.log('window.pageYOffset : ', window.pageYOffset);
-        console.log(this.vt);
-        console.log((this.vt - e.target.nextSibling.getBoundingClientRect().height) / 2 - e.target.nextSibling.getBoundingClientRect().top);
+        // console.log('작은카드일때 위와의 높이 차이 : ', e.target.nextSibling.getBoundingClientRect().top);
+        // console.log(e.target.nextSibling.getBoundingClientRect());
+        // console.log('window.pageYOffset : ', window.pageYOffset);
+        // console.log('뷰포트 높이 : ', this.vt);
+        // console.log('올라가야하는 높이 : ', (this.vt - e.target.nextSibling.getBoundingClientRect().height) / 2 - e.target.nextSibling.getBoundingClientRect().top);
         let moveaa = (this.vt - e.target.nextSibling.getBoundingClientRect().height) / 2 - e.target.nextSibling.getBoundingClientRect().top;
-        window.scrollTo({ top: moveaa, left: 0, behavior: 'smooth' });
-      } else {
-        console.log(e.target.getBoundingClientRect().top);
+        window.scrollBy({ top: -moveaa + 0.5, left: 0, behavior: 'smooth' });
       }
+      // console.log('--------------------------------------------');
     },
   },
 };
@@ -115,6 +170,8 @@ export default {
   z-index: 1;
   transform: rotateY(180deg);
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .img-wrap.flip .img-front {
@@ -141,12 +198,51 @@ export default {
   color: rgba(255, 255, 255, 0.4);
   font-size: 64px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.2;
   letter-spacing: 0.1rem;
   transition: 1s;
 }
 
 .img-wrap.flip.extend .img-back-title {
   font-size: 150px;
+}
+
+.card-more-btn {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  font-weight: 500;
+  font-size: 16px;
+  background: #fff;
+  left: 50%;
+  bottom: 6vh;
+  transform: translateX(-50%);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  opacity: 1;
+}
+
+.scroll-stop {
+  overflow: hidden;
+}
+
+.non-target {
+  pointer-events: none;
+}
+
+.card-slide-wrap {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.something {
+  margin-bottom: 500px;
 }
 </style>
