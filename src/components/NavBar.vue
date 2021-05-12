@@ -2,7 +2,7 @@
   <nav class="gnb">
     <ul class="nav-list">
       <li>burger</li>
-      <li>MACAO FRIENDS</li>
+      <li>KAKAO FRIENDS</li>
       <li>lang</li>
     </ul>
   </nav>
@@ -14,7 +14,7 @@ export default {};
 
 <style>
 .gnb {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 54px;
@@ -26,6 +26,7 @@ export default {};
   width: 100%;
   height: 100%;
   display: flex;
+  padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
 }

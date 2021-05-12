@@ -3,7 +3,7 @@
     <h2 class="sec-title">Friends</h2>
     <div class="slide-container">
       <splide :slides="slides" :options="options" @splide:move="onMoved">
-        <splide-slide @click="$router.push(`/kakaofriends/${slide.name}`)" class="slide-wrap" v-for="slide in slides" :key="slide.index" :style="{ backgroundColor: slide.back }">
+        <splide-slide @click="onCharacterClick(slide.name)" class="slide-wrap" v-for="slide in slides" :key="slide.index" :style="{ backgroundColor: slide.back }">
           <h2 class="slide-char-name">{{ slide.name }}</h2>
           <img class="slide-img" :src="slide.src" />
         </splide-slide>
@@ -66,6 +66,10 @@ export default {
       //   console.log('newIndex : ', newIndex);
       this.currentIdx = newIndex;
       console.log('this.currentIdx : ', this.currentIdx);
+    },
+    onCharacterClick(name) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      this.$router.push(`/kakaofriends/${name}`);
     },
   },
 };
