@@ -73,14 +73,21 @@ export default {
   mounted() {},
   computed: {
     scale() {
+      const scroll = this.offsetY;
+
       let scaleInt = 1;
       let translateInt = 30;
-      if (this.offsetY >= this.vt * 0 && this.offsetY < this.vt * 6) {
-        scaleInt = 1 - (this.offsetY / (this.vt * 4)) * 1.1;
-        translateInt = 30 - (this.offsetY / (this.vt * 4)) * 1;
-      } else {
+      if (scroll >= this.vt * 0 && scroll < this.vt * 3) {
+        console.log(scroll / (this.vt * 1));
+        scaleInt = 1 - scroll / (this.vt * 1) / 4;
+        // translateInt = 30 - (scroll / (this.vt * 4)) * 1;
+        translateInt = 30;
+      } else if (scroll < this.vt * 0) {
         scaleInt = 1;
-        translateInt = 14;
+        translateInt = 30;
+      } else if (scroll >= this.vt * 3) {
+        scaleInt = 0.25;
+        translateInt = 30;
       }
 
       return `scale(${scaleInt}) translate(0%, ${translateInt}% )`;
@@ -117,7 +124,7 @@ export default {
 }
 
 .first-div {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -137,13 +144,13 @@ export default {
 }
 
 .second-div {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   padding: 0 4rem;
 }
 
 .third-div {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   padding: 0 4rem;
   display: flex;
@@ -156,7 +163,7 @@ export default {
 }
 
 .fourth-div {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   padding: 0 4rem;
   display: flex;
@@ -169,7 +176,7 @@ export default {
 }
 
 .fifth-div {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   padding: 0 4rem;
   display: flex;
