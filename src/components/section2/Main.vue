@@ -1,5 +1,5 @@
 <template>
-  <h1>니니즈페이지</h1>
+  <section>Section2 Page</section>
 </template>
 
 <script>

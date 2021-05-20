@@ -1,12 +1,12 @@
 <template>
-  <router-link to="kakaofriends">
+  <router-link to="section1">
     <div class="home-box">
-      kakaofriends
+      Section1
     </div>
   </router-link>
-  <router-link to="niniz">
+  <router-link to="section2">
     <div class="home-box">
-      niniz
+      Secion2
     </div>
   </router-link>
 </template>

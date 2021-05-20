@@ -1,22 +1,22 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import Kf from './components/kf/Kf.vue';
-import KfHome from './components/kf/KfHome.vue';
-import Niniz from './components/niniz/Niniz.vue';
+import Section1Main from './components/section1/Main.vue';
+import Section1Parallax from './components/section1/Parallax.vue';
+import Slide1 from './components/section1/Slide1.vue';
+import Section2Main from './components/section2/Main.vue';
 import Home from './components/home/Home.vue';
-import Ryan from './components/kf/Ryan.vue';
 
 const routes = [
   {
-    path: '/kakaofriends',
-    component: Kf,
+    path: '/section1',
+    component: Section1Main,
     children: [
-      { path: '', component: KfHome },
-      { path: 'ryan', component: Ryan },
+      { path: '', component: Section1Parallax },
+      { path: 'slide1', component: Slide1 },
     ],
   },
   {
-    path: '/niniz',
-    component: Niniz,
+    path: '/section2',
+    component: Section2Main,
   },
   {
     path: '/',

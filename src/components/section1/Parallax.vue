@@ -9,7 +9,7 @@
 import Contain from './Contain';
 import SecondCon from './SecondCon.vue';
 export default {
-  name: 'KfHome',
+  name: 'Parallax',
   components: {
     Contain,
     SecondCon,

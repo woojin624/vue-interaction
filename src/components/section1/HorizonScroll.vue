@@ -2,16 +2,15 @@
   <section class="first-wrap">
     <div class="horizon-section" :style="{ transform: translation }">
       <div class="hor-section1">
-        <h1>Story</h1>
+        <h1>Horizon</h1>
         <img :src="horRyan1" alt="" />
       </div>
       <div class="hor-section2">
         <div class="enter-wrap">
-          <h2>Entertainer</h2>
+          <h2>Move to Horizon</h2>
           <p>
-            Ryan was also loved by the character<br />
-            itself, but through Ryan's various stories,<br />
-            he was able to gain more love.
+            Vue Interaction<br />
+            Parallax Scrolling<br />
           </p>
           <img :src="horRyan2" alt="" />
         </div>
@@ -29,12 +28,11 @@
       <img :style="{ opacity: ryanTheLionOpacity }" :src="horRyan2" alt="" />
       <button :style="{ opacity: ryanTheLionButton }">Ryan the lion</button>
     </div>
-    <h2>Ryan the lion</h2>
+    <h2>Vertical Scroll</h2>
     <p>
-      With content based on cut-toon<br />
-      and short-form videos, Ryan's<br />
-      daily life as well as Ryan's hidden<br />
-      insider evaluation.
+      Scroll Direction<br />
+      Horizon to<br />
+      Vertical<br />
     </p>
     <div class="rtl-content">
       <figure>
@@ -64,7 +62,7 @@ import rtlContent2 from '../../assets/rtl-content2.png';
 import rtlContent3 from '../../assets/rtl-content3.png';
 
 export default {
-  name: 'Ryan',
+  name: 'HorizonScroll',
   components: {},
   data() {
     return {

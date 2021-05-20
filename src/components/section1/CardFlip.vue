@@ -1,34 +1,36 @@
 <template>
-  <section class="card-wrap" v-for="ryan in ryanContent" :key="ryan.index">
-    <h1 class="card-title">{{ ryan.title }}</h1>
-    <div @click="onCardClick" :class="ryan.cardClass" :data-num="ryan.index">
-      <img class="card img-front" src="../../assets/ryan-the-lion.jpeg" alt="" />
-      <div class="card img-back">
-        <h1 class="img-back-title">RYAN<br />THE<br />LION</h1>
-        <RyanCardSlide :slides="ryan.slides" :cardClicked="ryan.cardClicked" v-if="ryan.cardClicked" :class="ryan.cardSlideHide" />
-        <div v-if="ryan.cardClicked" :class="ryan.cardMoreBtn">See More Contents</div>
+  <div class="card-flip">
+    <section class="card-wrap" v-for="card in cardContent" :key="card.index">
+      <h1 class="card-title">{{ card.title }}</h1>
+      <div @click="onCardClick" :class="card.cardClass" :data-num="card.index">
+        <img class="card img-front" src="../../assets/ryan-the-lion.jpeg" alt="" />
+        <div class="card img-back">
+          <h1 class="img-back-title">CARD<br />TO<br />FLIP</h1>
+          <CardSlide :slides="card.slides" :cardClicked="card.cardClicked" v-if="card.cardClicked" :class="card.cardSlideHide" />
+          <div v-if="card.cardClicked" :class="card.cardMoreBtn">See More Contents</div>
+        </div>
       </div>
-    </div>
-  </section>
-  <div class="something"></div>
+    </section>
+    <div class="something"></div>
+  </div>
 </template>
 
 <script>
 const body = document.querySelector('body');
 import example from '../../assets/IMG_4862.jpg';
-import RyanCardSlide from './RyanCardSlide';
+import CardSlide from './CardSlide';
 
 export default {
-  name: 'Ryan',
+  name: 'CardFlip',
   components: {
-    RyanCardSlide,
+    CardSlide,
   },
   data() {
     return {
-      ryanContent: [
+      cardContent: [
         {
           index: 0,
-          title: 'RYAN THE LION',
+          title: 'CARD TO FLIP',
           cardClicked: false,
           cardClass: 'img-wrap',
           cardMoreBtn: 'card-more-btn hide',
@@ -41,7 +43,7 @@ export default {
         },
         {
           index: 1,
-          title: 'RYCHOON DANCE',
+          title: 'VUE INTER',
           cardClicked: false,
           cardClass: 'img-wrap',
           cardMoreBtn: 'card-more-btn hide',
@@ -54,7 +56,7 @@ export default {
         },
         {
           index: 2,
-          title: 'PLAY WITH RYAN',
+          title: 'PLAY WITH CARD',
           cardClicked: false,
           cardClass: 'img-wrap',
           cardMoreBtn: 'card-more-btn hide',
@@ -76,27 +78,27 @@ export default {
       if (e.target !== e.currentTarget.childNodes[0] && e.target !== e.currentTarget.childNodes[1]) return;
       let idx = e.target.parentNode.dataset.num;
       this.getScrollTop(e);
-      if (this.ryanContent[idx].cardClass === 'img-wrap') {
-        this.ryanContent[idx].cardClass = 'img-wrap flip non-target';
+      if (this.cardContent[idx].cardClass === 'img-wrap') {
+        this.cardContent[idx].cardClass = 'img-wrap flip non-target';
         this.body.classList.add('scroll-stop');
         setTimeout(() => {
-          this.ryanContent[idx].cardClass = 'img-wrap flip extend non-target';
-          this.ryanContent[idx].cardClicked = true;
+          this.cardContent[idx].cardClass = 'img-wrap flip extend non-target';
+          this.cardContent[idx].cardClicked = true;
           setTimeout(() => {
-            this.ryanContent[idx].cardMoreBtn = 'card-more-btn';
-            this.ryanContent[idx].cardSlideHide = 'card-slide-wrap';
-            this.ryanContent[idx].cardClass = 'img-wrap flip extend';
+            this.cardContent[idx].cardMoreBtn = 'card-more-btn';
+            this.cardContent[idx].cardSlideHide = 'card-slide-wrap';
+            this.cardContent[idx].cardClass = 'img-wrap flip extend';
           }, 1000);
         }, 1000);
       } else {
-        this.ryanContent[idx].cardMoreBtn = 'card-more-btn hide';
-        this.ryanContent[idx].cardSlideHide = 'hide';
+        this.cardContent[idx].cardMoreBtn = 'card-more-btn hide';
+        this.cardContent[idx].cardSlideHide = 'hide';
         setTimeout(() => {
-          this.ryanContent[idx].cardClicked = false;
-          this.ryanContent[idx].cardClass = 'img-wrap flip non-target';
+          this.cardContent[idx].cardClicked = false;
+          this.cardContent[idx].cardClass = 'img-wrap flip non-target';
           this.body.classList.remove('scroll-stop');
           setTimeout(() => {
-            this.ryanContent[idx].cardClass = 'img-wrap';
+            this.cardContent[idx].cardClass = 'img-wrap';
           }, 1000);
         }, 300);
       }
@@ -118,6 +120,11 @@ export default {
 </script>
 
 <style>
+.card-flip {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
 .card-wrap {
   position: relative;
   width: 100%;
@@ -148,6 +155,7 @@ export default {
 
 .card {
   width: 100%;
+  max-width: 500px;
   border-radius: 20px;
   transition: 1s;
 }

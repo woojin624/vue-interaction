@@ -1,9 +1,9 @@
 <template>
   <nav class="gnb">
     <ul class="nav-list">
-      <li>burger</li>
-      <li>KAKAO FRIENDS</li>
-      <li>lang</li>
+      <li>Vue</li>
+      <li>Interaction</li>
+      <li>Menu</li>
     </ul>
   </nav>
 </template>

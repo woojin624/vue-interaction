@@ -1,9 +1,9 @@
 <template>
   <div class="main-container">
     <div class="main">
-      <div class="friends-contain">
-        <img class="ryan-main" :style="{ transform: scale }" src="../../assets/ryan1.png" alt="" />
-        <img :class="friendsHide" src="../../assets/kakaofriends.png" alt="" />
+      <div class="section1-contain">
+        <img class="contain-main" :style="{ transform: scale }" src="../../assets/ryan1.png" alt="" />
+        <img :class="imgHide" src="../../assets/kakaofriends.png" alt="" />
         <div class="text-wrap">
           <div v-for="msg in msgs" :key="msg.id" class="text-section">
             <p v-if="msg.text1" class="desc" :style="{ transform: translation[msg.id - 1], opacity: opacity[msg.id - 1] }">{{ msg.text1 }}</p>
@@ -14,38 +14,31 @@
       </div>
     </div>
   </div>
-  <div class="content-container">
-    <h3>Brand Overview</h3>
-    <p>
-      Kakao Friends made of emoticon Characters on kakao talk used in South Korea, normally
-    </p>
-    <img class="content-card" src="../../assets/card-image.png" alt="" />
-  </div>
 </template>
 
 <script>
 const msgs = [
   {
     id: 1,
-    text1: '누구에게나',
-    text2: '사랑받는',
+    text1: 'Vue',
+    text2: 'Interacton',
   },
   {
     id: 2,
-    text1: '국민캐릭터',
-    text2: '카카오프렌즈',
+    text1: 'Test',
+    text2: 'Demo',
   },
   {
     id: 3,
-    text1: '즐거운 일상',
+    text1: 'Parallax',
   },
   {
     id: 4,
-    text1: '일상의 즐거움',
+    text1: 'Scroll',
   },
   {
     id: 5,
-    text3: 'KAKAO FRIENDS',
+    text3: 'Interacton',
   },
 ];
 
@@ -159,15 +152,15 @@ export default {
       //   console.log('scale: ', scale);
       return `scale(${scaleInt}) translateY(${translateInt + 27}% )`;
     },
-    friendsHide() {
-      let friendsHide;
+    imgHide() {
+      let imgHide;
       if (this.offsetY < this.vt * 4.3) {
-        friendsHide = 'kakaofriends-main friends-hide';
+        imgHide = 'img-main img-hide';
       } else {
-        friendsHide = 'kakaofriends-main';
+        imgHide = 'img-main';
       }
 
-      return friendsHide;
+      return imgHide;
     },
   },
 };
@@ -188,7 +181,7 @@ export default {
   height: 100vh;
 }
 
-.friends-contain {
+.section1-contain {
   position: sticky;
   top: 0;
   width: 100%;
@@ -200,13 +193,13 @@ export default {
   align-items: center;
   overflow: hidden;
 }
-.ryan-main {
+.contain-main {
   position: relative;
   width: 100%;
   height: auto;
   z-index: 2;
 }
-.kakaofriends-main {
+.img-main {
   position: absolute;
   transform: translateY(32%) scale(1);
   width: 100%;
@@ -214,7 +207,7 @@ export default {
   transition: 0.2s ease-in;
   opacity: 1;
 }
-.friends-hide {
+.img-hide {
   opacity: 0;
   transform: translateY(38%) scale(0.7);
 }
